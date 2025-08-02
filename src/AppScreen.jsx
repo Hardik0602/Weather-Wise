@@ -57,7 +57,7 @@ function AppScreen() {
                       className={`flex-row mb-1 p-3 px-4 items-center ${showborder ? 'border-b-2 border-b-gray-400' : null}`}
                       onPress={() => handlePress()}>
                       <MapPinIcon color={'gray'} />
-                      <Text className='text-black text-lg ml-2'>London, UK</Text>
+                      <Text className='text-black text-lg ml-2'>Noida, India</Text>
                     </TouchableOpacity>
                   )
                 })
@@ -66,7 +66,7 @@ function AppScreen() {
           ) : null}
         </View>
         <View className='flex-1 mx-4 justify-around'>
-          <Text className='text-white text-center font-bold text-2xl'>London, <Text className='text-lg font-semibold text-gray-300'>UK</Text></Text>
+          <Text className='text-white text-center font-bold text-2xl'>Noida, <Text className='text-lg font-semibold text-gray-300'>INida</Text></Text>
           <View className='justify-center flex-row'>
             <Image
               source={cloudy}
