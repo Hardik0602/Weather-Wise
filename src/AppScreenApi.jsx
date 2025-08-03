@@ -209,7 +209,7 @@ function AppScreen() {
                                         className='h-7 w-7'
                                         resizeMode='contain'
                                         style={{ tintColor: 'white' }} />
-                                    <Text className='text-white text-base font-bold'>6:05 AM</Text>
+                                    <Text className='text-white text-base font-bold'>{weather?.forecast?.forecastday[0]?.astro?.sunrise}</Text>
                                 </View>
                             </View>
                         </View>
