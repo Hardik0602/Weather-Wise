@@ -7,10 +7,14 @@ images and icons from https://www.flaticon.com/ and react-native-heroicons
 
 weather api from https://www.weatherapi.com/
 
-safeAreaInserts from react-native-safe-area-context
+useSafeAreaInsets and SafeAreaProvider from react-native-safe-area-context
 
 loader from react-native-progress
 
 api integration using axios and debounce from lodash
 
 background image from https://www.freepik.com/free-photos-vectors/app-background
+
+geoLocation api from react-native-geolocation-service
+
+permissions from react-native-permissions

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Image, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import bg from './images/bg.jpg'
 import wind from './images/wind.png'
@@ -10,17 +10,19 @@ import { MapPinIcon as LocationIcon } from "react-native-heroicons/outline";
 import { MapPinIcon } from "react-native-heroicons/solid";
 import { CalendarDaysIcon } from "react-native-heroicons/solid";
 import { debounce } from 'lodash';
-import { fetchLocation, fetchWeatherForecast } from './Api';
+import { fetchLocation, fetchWeatherForecast } from './Api.js';
 import * as Progress from 'react-native-progress';
+import { check, openSettings, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
+import Geolocation from 'react-native-geolocation-service';
 function AppScreen() {
     const insets = useSafeAreaInsets()
     const [showSearch, setShowSearch] = useState(false)
-    const [locations, setLoactions] = useState([])
+    const [locations, setLocations] = useState([])
     const [weather, setWeather] = useState({})
     const [loading, setLoading] = useState(true)
     const handleLocation = (loc) => {
         // console.log(loc)
-        setLoactions([])
+        setLocations([])
         setShowSearch(false)
         setLoading(true)
         fetchWeatherForecast({
@@ -32,12 +34,72 @@ function AppScreen() {
             setLoading(false)
         })
     }
+    const handleCurrentLocation = async () => {
+        try {
+            const permission = PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
+            let result = await check(permission)
+            if (result === RESULTS.DENIED || result === RESULTS.BLOCKED) {
+                result = await request(permission)
+            }
+            if (result === RESULTS.GRANTED) {
+                setLoading(true)
+                Geolocation.getCurrentPosition(
+                    async (position) => {
+                        const { latitude, longitude } = position.coords
+                        await fetchWeatherForecastCoords(latitude, longitude)
+                    },
+                    (error) => {
+                        setLoading(false)
+                        console.log('error: ' + error.message)
+                        if (error.code === 2) {
+                            Alert.alert(
+                                'location disabled',
+                                'please enable location',
+                                [
+                                    { text: 'cancel', style: 'cancel' },
+                                    { text: 'open settings', onPress: () => openSettings() }
+                                ]
+                            )
+                        }
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 15000,
+                        maximumAge: 10000,
+                        forceRequestLocation: true,
+                        showLocationDialog: true
+                    }
+                )
+            } else {
+                Alert.alert(
+                    'permission denied',
+                    'location permission is needed',
+                    [
+                        { text: 'cancel', style: 'cancel' },
+                        { text: 'open settings', onPress: () => openSettings() }
+                    ]
+                )
+            }
+        } catch (error) {
+            console.log('error: ' + error)
+            setLoading(false)
+        }
+    }
+    const fetchWeatherForecastCoords = async (latitude, longitude) => {
+        fetchWeatherForecast({
+            cityName: `${latitude},${longitude}`,
+            days: '7'
+        }).then(data => {
+            setWeather(data)
+            setLoading(false)
+        })
+    }
     const handleSearch = value => {
         // console.log(value)
         if (value.length > 2) {
             fetchLocation({ cityName: value }).then(data => {
                 // console.log(data)
-                setLoactions(data)
+                setLocations(data)
             })
         }
     }
@@ -70,8 +132,8 @@ function AppScreen() {
             ) : (
                 <View className='flex-1' style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
                     <View style={{ height: '7%' }} className='mx-4'>
-                        <View className={`${showSearch ? 'bg-white opacity-[0.2]' : 'bg-transparent'} rounded-full flex-row items-center justify-end`}>
-                            {/* {showSearch ? (
+                        <View className={`${showSearch ? 'bg-white opacity-[0.2]' : 'bg-transparent'} rounded-full flex-row items-center justify-between`}>
+                            {showSearch ? (
                                 <TextInput
                                     onChangeText={handleTextDebounce}
                                     placeholder='Search City'
@@ -79,17 +141,11 @@ function AppScreen() {
                                     className='pl-6 text-white font-bold text-base flex-1' />
                             ) : (
                                 <TouchableOpacity
-                                    className='bg-white opacity-[0.2] p-3 m-1 rounded-full'>
+                                    className='bg-white opacity-[0.2] p-3 m-1 rounded-full'
+                                    onPress={handleCurrentLocation}>
                                     <LocationIcon color={'white'} />
                                 </TouchableOpacity>
-                            )} */}
-                            {showSearch ? (
-                                <TextInput
-                                    onChangeText={handleTextDebounce}
-                                    placeholder='Search City'
-                                    placeholderTextColor={'white'}
-                                    className='pl-6 text-white font-bold text-base flex-1' />
-                            ) : null}
+                            )}
                             <TouchableOpacity
                                 className={`bg-white ${showSearch ? 'opacity-[0.8]' : 'opacity-[0.2]'} p-3 m-1 rounded-full`}
                                 onPress={() => setShowSearch(!showSearch)} >
