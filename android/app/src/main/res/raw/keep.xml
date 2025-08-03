@@ -1,0 +1,1 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@drawable/src_images_bg,@drawable/src_images_cloudy,@drawable/src_images_wind,@drawable/src_images_sunrise,@drawable/src_images_humidity,@drawable/src_images_thunder" />
