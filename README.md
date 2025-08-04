@@ -67,7 +67,7 @@ cd ios && pod install && cd ..
 2. Get your API key
 3. Replace the API key in `Api.js`:
    ```javascript
-   const API_KEY = 'your_weather_api_key_here';
+   const API_KEY = 'your_weather_api_key_here'
    ```
 
 ### Step 6: Platform-specific Setup
@@ -120,7 +120,7 @@ The app uses [WeatherAPI.com](https://www.weatherapi.com/) for weather data:
 
 ## Assets & Resources
 
-- **Icons**: [React Native Heroicons](https://github.com/tailwindlabs/heroicons) and [Flaticon](https://www.flaticon.com/)
+- **Icons**: [React Native Heroicons](https://github.com/ecklf/react-native-heroicons) and [Flaticon](https://www.flaticon.com/)
 - **Images**: Weather condition icons from WeatherAPI
 - **Background**: App background images from [Freepik](https://www.freepik.com/free-photos-vectors/app-background)
 
