@@ -15,9 +15,7 @@ A React Native-based mobile app designed to provide real-time location-based wea
 
 ## Screenshots
 
-![Weather App UI](src/images/app_screenshot.png)
-
-*Add your app screenshots here to showcase the beautiful UI*
+<img src="src/images/app_screenshot.png" alt="Weather App UI" width="300"/>
 
 ## Tech Stack
 
