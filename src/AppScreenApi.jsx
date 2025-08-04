@@ -102,6 +102,9 @@ function AppScreen() {
                 setLocations(data)
             })
         }
+        else {
+            setLocations([])
+        }
     }
     const handleTextDebounce = useCallback(debounce(handleSearch, 1200), [])
     const { current, location } = weather

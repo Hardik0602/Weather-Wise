@@ -13,6 +13,12 @@ A React Native-based mobile app designed to provide real-time location-based wea
 - 📱 Responsive design optimized for mobile devices
 - ⚡ Fast and smooth user experience
 
+## Screenshots
+
+![Weather App UI](src/images/app_screenshot.png)
+
+*Add your app screenshots here to showcase the beautiful UI*
+
 ## Tech Stack
 
 - **React Native CLI** - Cross-platform mobile development
@@ -94,17 +100,14 @@ npx react-native run-ios
 
 ```json
 {
-  "react-native": "^0.73.0",
-  "react": "^18.2.0",
-  "@react-native-community/geolocation": "^3.0.0",
-  "react-native-geolocation-service": "^5.3.1",
-  "react-native-permissions": "^4.0.0",
-  "react-native-safe-area-context": "^4.8.0",
-  "react-native-progress": "^5.0.0",
-  "react-native-heroicons": "^4.0.0",
   "nativewind": "^2.0.11",
-  "tailwindcss": "^3.3.0",
-  "axios": "^1.6.0",
+  "tailwindcss": "^3.3.2",
+  "react-native-safe-area-context": "^5.5.2",
+  "react-native-progress": "^5.0.1",
+  "react-native-permissions": "^5.4.2",
+  "react-native-heroicons": "^4.0.0",
+  "react-native-geolocation-service": "^5.3.1",
+  "axios": "^1.11.0",
   "lodash": "^4.17.21"
 }
 ```
