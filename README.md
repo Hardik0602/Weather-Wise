@@ -137,15 +137,6 @@ The app uses [WeatherAPI.com](https://www.weatherapi.com/) for weather data:
 - Clean and intuitive search interface
 
 ### UI/UX
-- NativeWind (Tailwind CSS) for responsive styling
+- NativeWind (Tailwind CSS) for styling
 - Safe area handling with `react-native-safe-area-context`
 - Loading states with `react-native-progress`
-- Smooth animations and transitions
-
-## Acknowledgments
-
-- [WeatherAPI.com](https://www.weatherapi.com/) for weather data
-- [React Native Community](https://reactnative.dev/) for the framework
-- [NativeWind](https://v2.nativewind.dev/) for Tailwind CSS integration
-- [Flaticon](https://www.flaticon.com/) for icons
-- [Freepik](https://www.freepik.com/) for background images
