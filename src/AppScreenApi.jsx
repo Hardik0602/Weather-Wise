@@ -122,7 +122,7 @@ function AppScreen() {
     }, [])
     return (
         <View className='flex-1'>
-            <StatusBar barStyle={'light-content'} />
+            <StatusBar translucent backgroundColor='transparent' barStyle={'light-content'} />
             <Image
                 source={bg}
                 blurRadius={50}
