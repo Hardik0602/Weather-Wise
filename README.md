@@ -9,9 +9,6 @@ A React Native-based mobile app designed to provide real-time location-based wea
 - 🔍 Global city search with auto-suggestions
 - 📅 7-day detailed weather forecast
 - 🌡️ Comprehensive weather metrics (temperature, humidity, wind speed, sunrise)
-- 🎨 Beautiful UI with weather condition icons and background imagery
-- 📱 Responsive design optimized for mobile devices
-- ⚡ Fast and smooth user experience
 
 ## Screenshots
 
