@@ -21,14 +21,11 @@ A React Native-based mobile app designed to provide real-time location-based wea
 
 - **React Native CLI** - Cross-platform mobile development
 - **NativeWind (Tailwind CSS)** - Styling and responsive design
-- **WeatherAPI** - Weather data provider
 - **Axios** - HTTP client for API requests
-- **React Native Heroicons** - Icon library
 - **Lodash** - Utility functions (debounce)
 - **React Native Geolocation Service** - GPS location services
 - **React Native Permissions** - Permission handling
 - **React Native Safe Area Context** - Safe area handling
-- **React Native Progress** - Loading indicators
 
 ## Installation
 
@@ -134,7 +131,6 @@ The app uses [WeatherAPI.com](https://www.weatherapi.com/) for weather data:
 ### Search Functionality
 - Debounced search using Lodash for better performance
 - Auto-suggestions for global cities
-- Clean and intuitive search interface
 
 ### UI/UX
 - NativeWind (Tailwind CSS) for styling
